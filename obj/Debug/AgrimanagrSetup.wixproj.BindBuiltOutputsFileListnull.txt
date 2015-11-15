@@ -1,0 +1,2 @@
+C:\Asa\Documents\virtual city\dev\Agrimanagr-Forked\Code\AgrimanagrSetup\bin\Debug\AgrimanagrSetup.msi
+C:\Asa\Documents\virtual city\dev\Agrimanagr-Forked\Code\AgrimanagrSetup\bin\Debug\AgrimanagrSetup.wixpdb

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Agrimanagr" Language="1033" Version="1.0.0.0" Manufacturer="Virtual City Ltd" UpgradeCode="42c9b642-77bc-42da-9cd4-7b59deeabfa0">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+    <UIRef Id ="WixUI_Mondo"/>
+    <UIRef Id ="WixUI_ErrorProgressText"/>
+		<Feature Id="Agrimanagr" Title="Agrimanagr Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Agrimanagr" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+      <Component Id="cp_AgrimanagrWPFUIExe" Guid="46ef3644-ee1a-46d0-b627-97b7f48ae525">
+        <File Id="f_AgrimanagrWPFUIExe" Name="$(var.Agrimanagr.WPF.UI.TargetFileName)" Source="$(var.Agrimanagr.WPF.UI.TargetPath)"/> 
+      </Component>
+      <Component Id="cp_AgrimanagrWPFUIConfig" Guid="9b1c0add-0e4a-42a8-9760-3836e704afab">
+        <File Id="f_AgrimanagrWPFUIConfig" Name="$(var.Agrimanagr.WPF.UI.TargetFileName).config" Source="$(var.Agrimanagr.WPF.UI.TargetPath).config"/> 
+      </Component>
+      <Component Id="cp_AgrimanagrCoreDll" Guid="22aaabf1-9108-42df-b1f0-dc24125db62d">
+        <File Id="f_AgrimanagrCoreDll" Name="Agrimanagr.Core.Data.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/> 
+      </Component>
+      
+      <Component Id="cp_Akavachedll" Guid="f1957ea5-5489-44fd-9d78-66e631fe7964">
+        <File Id="f_Akavachedll" Name="Akavache.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_AkavacheSqlite3dll" Guid="dbc01a88-dbd7-4aec-9999-6e315f3977be">
+        <File Id="f_AkavacheSqlite3dll" Name="Akavache.Sqlite3.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_AkavacheSqlite3xml" Guid="675aee81-97fe-4e7f-a52a-d45a60c3da02">
+        <File Id="f_AkavacheSqlite3xml" Name="Akavache.Sqlite3.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_Akavachexml" Guid="28d8aec3-a39b-4cc1-84a1-e14a41e46222">
+        <File Id="f_Akavachexml" Name="Akavache.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_AutoMapperdll" Guid="96166527-6494-4a02-b46c-377bdcda7e69">
+        <File Id="f_AutoMapperdll" Name="AutoMapper.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_AutoMapperxml" Guid="a6411620-ca42-453b-8b50-7d209178ed58">
+        <File Id="f_AutoMapperxml" Name="AutoMapper.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_DistributrCoredll" Guid="99f938bc-6c3c-4fed-8581-a1883126d35d">
+        <File Id="f_DistributrCoredll" Name="Distributr.Core.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_DistributrImportEntitiesdll" Guid="9aecbb45-aeef-4ae9-8777-1c85dfbff615">
+        <File Id="f_DistributrImportEntitiesdll" Name="Distributr.Import.Entities.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_DistributrWPFLibDatadll" Guid="c938044f-45cb-4389-9564-dee6124d37be">
+        <File Id="f_DistributrWPFLibDatadll" Name="Distributr.WPF.Lib.Data.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_DistributrWPFLibdll" Guid="802a1c1f-4ac7-47ff-9792-cca500c11b4f">
+        <File Id="f_DistributrWPFLibdll" Name="Distributr.WPF.Lib.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_DistributrWPFLibImplDll" Guid="27b2dc90-a136-42f2-9218-d8afe97a0f3c">
+        <File Id="f_DistributrWPFLibImplDll" Name="Distributr.WPF.Lib.Impl.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_DistributrWPFLibServicesdll" Guid="de6f80f1-c284-49f0-896e-11e9935ef102">
+        <File Id="f_DistributrWPFLibServicesdll" Name="Distributr.WPF.Lib.Services.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_EntityFrameworkdll" Guid="cabea125-9385-4d93-90c8-fc07ffd171cb">
+        <File Id="f_EntityFrameworkdll" Name="EntityFramework.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_EntityFrameworkSqlServerdll" Guid="6eec3370-c141-43e0-b2bc-a74deb14989f">
+        <File Id="f_EntityFrameworkSqlServerdll" Name="EntityFramework.SqlServer.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_EntityFrameworkSqlServerxml" Guid="bccbcbb1-a827-4848-a902-c6372e9857e3">
+        <File Id="f_EntityFrameworkSqlServerxml" Name="EntityFramework.SqlServer.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_EntityFrameworkxml" Guid="b5324d60-f17b-44aa-b9ec-a69c0d6eac14">
+        <File Id="f_EntityFrameworkxml" Name="EntityFramework.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_GalaSoftMvvmLightExtrasWPF45dll" Guid="b2a99247-2b45-4b19-aebb-13d94daf2d22">
+        <File Id="f_GalaSoftMvvmLightExtrasWPF45dll" Name="GalaSoft.MvvmLight.Extras.WPF45.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_GalaSoftMvvmLightExtrasWPF45xml" Guid="6d71a96d-c059-4b6d-9f5d-de1575368d51">
+        <File Id="f_GalaSoftMvvmLightExtrasWPF45xml" Name="GalaSoft.MvvmLight.Extras.WPF45.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_GalaSoftMvvmLightWPF45dll" Guid="ba47b678-845e-4475-a60e-76912cd6a604">
+        <File Id="f_GalaSoftMvvmLightWPF45dll" Name="GalaSoft.MvvmLight.WPF45.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_GalaSoftMvvmLightWPF45xml" Guid="744d9a72-4613-4a87-ba52-4b28c25e87af">
+        <File Id="f_GalaSoftMvvmLightWPF45xml" Name="GalaSoft.MvvmLight.WPF45.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_InteropFP3530dll" Guid="fc0ec07d-90fa-4026-9f1a-7a5d2ef99fff">
+        <File Id="f_InteropFP3530dll" Name="Interop.FP3530.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_log4netdll" Guid="8b061377-689b-44e0-b6fd-9a0951fbe9c9">
+        <File Id="f_log4netdll" Name="log4net.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+     <Component Id="cp_log4netxml" Guid="33b5c8ca-1519-4e1b-9070-5719a7fd4ab0">
+        <File Id="f_log4netxml" Name="log4net.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_MicrosoftApplicationInsightsdll" Guid="6fb11af7-4838-4fc3-87f4-de7edac4a862">
+        <File Id="f_MicrosoftApplicationInsightsdll" Name="Microsoft.ApplicationInsights.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_MicrosoftApplicationInsightsxml" Guid="c3fdac7c-b021-4533-9656-741f56ae7bee">
+        <File Id="f_MicrosoftApplicationInsightsxml" Name="Microsoft.ApplicationInsights.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_MicrosoftPracticesServiceLocationdll" Guid="5b6f985c-9bb3-4f74-8aa0-20e8c561a6fe">
+        <File Id="f_MicrosoftPracticesServiceLocationdll" Name="Microsoft.Practices.ServiceLocation.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_MicrosoftPracticesServiceLocationxml" Guid="b93717b9-8c5f-4035-a625-35a205c0ed80">
+        <File Id="f_MicrosoftPracticesServiceLocationxml" Name="Microsoft.Practices.ServiceLocation.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_NewtonsoftJsondll" Guid="3d2954b1-2b32-49e9-8f14-d369b09498ca">
+        <File Id="f_NewtonsoftJsondll" Name="Newtonsoft.Json.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_NewtonsoftJsonxml" Guid="5a6cb4a0-bc50-4074-a514-7de66f40a639">
+        <File Id="f_NewtonsoftJsonxml" Name="Newtonsoft.Json.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_RefactorThisGraphDiffdll" Guid="f3e59d64-c325-41b8-95dd-0282dad6d711">
+        <File Id="f_RefactorThisGraphDiffdll" Name="RefactorThis.GraphDiff.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_ScalePrinterAssetsDB" Guid="8c3ac14b-be2c-4f28-be16-8ada93fb7bfe">
+        <File Id="f_ScalePrinterAssetsDB" Name="ScalePrinterAssetsDB.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SQLitePCLrawdll" Guid="fe1b361c-863d-4aeb-8be9-5345d4890631">
+        <File Id="f_SQLitePCLrawdll" Name="SQLitePCL.raw.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_StructureMapdll" Guid="dbddfdd0-3834-44a2-a2fe-448773026ca6">
+        <File Id="f_StructureMapdll" Name="StructureMap.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_StructureMapxml" Guid="472ca056-fb32-4aab-b5d2-a9934e2e64c7">
+        <File Id="f_StructureMapxml" Name="StructureMap.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemNetHttpFormattingdll" Guid="839b0a84-d22e-4642-888d-4c6d970eb6f4">
+        <File Id="f_SystemNetHttpFormattingdll" Name="System.Net.Http.Formatting.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_SystemNetHttpFormattingxml" Guid="d11a462c-b63c-4271-a561-57550fe89315">
+        <File Id="f_SystemNetHttpFormattingxml" Name="System.Net.Http.Formatting.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactiveCoredll" Guid="9cdfe8f8-10a0-46b5-8954-2f6f0c0503c1">
+        <File Id="f_SystemReactiveCoredll" Name="System.Reactive.Core.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_SystemReactiveCorexml" Guid="2add512c-6705-48f5-9465-0d8fc9e27093">
+        <File Id="f_SystemReactiveCorexml" Name="System.Reactive.Core.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactiveInterfacesdll" Guid="4045d950-062a-4ba7-9dad-eb11933c7213">
+        <File Id="f_SystemReactiveInterfacesdll" Name="System.Reactive.Interfaces.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactiveInterfacesxml" Guid="883436e0-c3fc-4c7a-944b-0a2b4034c9d3">
+        <File Id="f_SystemReactiveInterfacesxml" Name="System.Reactive.Interfaces.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactiveLinqdll" Guid="d59216d1-ceed-484f-8024-a90ce97c1067">
+        <File Id="f_SystemReactiveLinqdll" Name="System.Reactive.Linq.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactiveLinqxml" Guid="6b31067c-bc0b-4bb1-8a72-d0b9d57e028f">
+        <File Id="f_SystemReactiveLinqxml" Name="System.Reactive.Linq.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactivePlatformServicesdll" Guid="030346e6-4f50-420f-a5f5-c5758afcc14b">
+        <File Id="f_SystemReactivePlatformServicesdll" Name="System.Reactive.PlatformServices.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemReactivePlatformServicesxml" Guid="31f3ab0a-2b57-41fd-8f62-c9dc8bcd906a">
+        <File Id="f_SystemReactivePlatformServicesxml" Name="System.Reactive.PlatformServices.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_System.WindowsControlsDataVisualizationToolkitdll" Guid="853419fb-bd26-4eb2-bc69-70800c2be1ea">
+        <File Id="f_SystemWindowsControlsDataVisualizationToolkitdll" Name="System.Windows.Controls.DataVisualization.Toolkit.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemWindowsControlsInputToolkitdll" Guid="f0108306-d424-44b2-b7b8-11976cc07dbc">
+        <File Id="f_SystemWindowsControlsInputToolkitdll" Name="System.Windows.Controls.Input.Toolkit.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemWindowsControlsLayoutToolkitdll" Guid="361f1ab5-e186-49dc-a01a-acf7d8e27166">
+        <File Id="f_SystemWindowsControlsLayoutToolkitdll" Name="System.Windows.Controls.Layout.Toolkit.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemWindowsInteractivitydll" Guid="46f47df4-597a-4705-8edc-1b183497e895">
+        <File Id="f_SystemWindowsInteractivitydll" Name="System.Windows.Interactivity.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_SystemWindowsInteractivityxml" Guid="19d4876a-8640-4c09-ad7a-fcf17a156efc">
+        <File Id="f_SystemWindowsInteractivityxml" Name="System.Windows.Interactivity.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_TradingPlatformClientdll" Guid="4efd5b4e-acd2-450c-ac2c-602db4dd45c5">
+        <File Id="f_TradingPlatformClientdll" Name="TradingPlatform.Client.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_TradingPlatformShareddll" Guid="de22083c-b644-43e4-a0dc-103c1e244fdb">
+        <File Id="f_TradingPlatformShareddll" Name="TradingPlatform.Shared.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_TradingPlatformSharedxml" Guid="9a3b83d1-0479-4cce-aee8-abec9b5484a5">
+        <File Id="f_TradingPlatformSharedxml" Name="TradingPlatform.Shared.xml" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_WarehouseReceiptClientdll" Guid="933a04d3-b2de-45c6-9552-5391857500b4">
+        <File Id="f_WarehouseReceiptClientdll" Name="WarehouseReceipt.Client.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_WarehouseReceiptShareddll" Guid="242d135b-fd2f-4d7f-bf92-7f6aeef7e47c">
+        <File Id="f_WarehouseReceiptShareddll" Name="WarehouseReceipt.Shared.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_WPFToolkitdll" Guid="cad909e9-98cb-4f37-aa7a-a186c8212c49">
+        <File Id="f_WWPFToolkitdll" Name="WPFToolkit.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_XceedWpfAvalonDockdll" Guid="2165afd4-7b20-4b36-ad74-3709a1a2e72d">
+        <File Id="f_Xceed.Wpf.AvalonDock.dll" Name="Xceed.Wpf.AvalonDock.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_XceedWpfAvalonDockThemesAerodll" Guid="060dbcd5-b13a-424a-9375-1b8fe6ededb5">
+        <File Id="f_XceedWpfAvalonDockThemesAerodll" Name="Xceed.Wpf.AvalonDock.Themes.Aero.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_XceedWpfAvalonDockThemesMetrodll" Guid="fe812224-9bb2-4416-8252-b9dababa0a39">
+        <File Id="f_XceedWpfAvalonDockThemesMetrodll" Name="Xceed.Wpf.AvalonDock.Themes.Metro.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_XceedWpfAvalonDockThemesVS2010dll" Guid="5b499c90-0dc2-46cf-847e-38b00e71c9f9">
+        <File Id="f_XceedWpfAvalonDockThemesVS2010dll" Name="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+
+      <Component Id="cp_XceedWpfDataGriddll" Guid="4d9e2fce-4f96-43a2-8762-42678838cc66">
+        <File Id="f_XceedWpfDataGriddll" Name="Xceed.Wpf.DataGrid.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+      
+      <Component Id="cp_XceedWpfToolkitdll" Guid="732fef6d-39f2-4ad9-beeb-1ac92b6b8a8d">
+        <File Id="f_Xceed.WpfToolkitdll" Name="Xceed.Wpf.Toolkit.dll" Source="$(var.Agrimanagr.WPF.UI.TargetDir)"/>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

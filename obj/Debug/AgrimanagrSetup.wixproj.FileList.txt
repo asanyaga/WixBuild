@@ -1,0 +1,6 @@
+C:\Asa\Documents\virtual city\dev\Agrimanagr-Forked\Code\AgrimanagrSetup\bin\Debug\AgrimanagrSetup.msi
+C:\Asa\Documents\virtual city\dev\Agrimanagr-Forked\Code\AgrimanagrSetup\bin\Debug\AgrimanagrSetup.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\AgrimanagrSetup.wixproj.BindContentsFileListnull.txt
+obj\Debug\AgrimanagrSetup.wixproj.BindOutputsFileListnull.txt
+obj\Debug\AgrimanagrSetup.wixproj.BindBuiltOutputsFileListnull.txt
