@@ -8,15 +8,36 @@
     <UIRef Id ="WixUI_ErrorProgressText"/>
 		<Feature Id="Agrimanagr" Title="Agrimanagr Setup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut"/>
 		</Feature>
+  <PropertyRef Id="NETFRAMEWORK45"/>
+  <Condition Message='This setup requires the .NET Framework 4.5 installed.'>
+   <![CDATA[Installed OR NETFRAMEWORK45]]>
+  </Condition>
 	</Product>
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
+        <Directory Id="ProgramMenuFolder">
+          <Directory Id="ApplicationProgramsFolder" Name="Agrimanagr"/>
+        </Directory>
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="Agrimanagr" />
 			</Directory>
 		</Directory>
+    
+    <DirectoryRef Id="ApplicationProgramsFolder">
+    <Component Id="ApplicationShortcut" Guid="01b77621-641c-4bf0-bcb5-7392e214dd5c">
+        <Shortcut Id="ApplicationStartMenuShortcut" 
+                  Name="Agrimanagr"
+                  Description="My Application Description"
+                  Target="[#f_AgrimanagrWPFUIExe]"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Advertise="no"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Virtual City\Agrimanagr" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+    </Component>
+  </DirectoryRef>
 	</Fragment>
 
 	<Fragment>
