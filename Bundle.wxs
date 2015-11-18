@@ -9,18 +9,32 @@
 		<Chain>
 			<!-- TODO: Define the list of chained packages. -->
 			<!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
-      <ExePackage Id="net451" Name="Microsoft .NET Framework 4.5.1 Setup" Cache="no" Compressed="yes" PerMachine="yes" Permanent="yes" Vital="yes" InstallCommand="/q"
-      SourceFile="NDP451-KB2858728-x86-x64-AllOS-ENU.exe"
+      
+    <!--  <ExePackage Id="net451" DisplayName="Installing Microsoft .NET Framework 4.5.1" 
+              Name="Microsoft .NET Framework 4.5.1 Setup" Cache="no" Compressed="yes" PerMachine="yes" 
+Permanent="yes" Vital="yes" InstallCommand="/q"
+             SourceFile="NDP451-KB2858728-x86-x64-AllOS-ENU.exe"
       DetectCondition="(Net4FullVersion = &quot;4.5.50938&quot;) AND (NOT VersionNT64 OR (Net4x64FullVersion = &quot;4.5.50938&quot;))"
       InstallCondition="(VersionNT >= v6.0 OR VersionNT64 >= v6.0) AND (NOT (Net4FullVersion = &quot;4.5.50938&quot; OR Net4x64FullVersion = &quot;4.5.50938&quot;))"/>
-
+      -->
+      <ExePackage Compressed="yes"
+                        DisplayName="Installing SQL Server Express 2012"
+                        Id="SQLServerExpressInstall" 
+                        InstallCommand='/IACCEPTSQLSERVERLICENSETERMS /HIDECONSOLE /INSTANCEID="SQLEXPRESS" /ACTION=Install /FEATURES=SQLEngine,RS,Tools /INDICATEPROGRESS="True" /QS /ERRORREPORTING="False" /SQMREPORTING="False" /INSTANCENAME="SQLEXPRESS" /AGTSVCSTARTUPTYPE="Manual" /ISSVCSTARTUPTYPE="Automatic" /ISSVCACCOUNT="NT AUTHORITY\NetworkService" /ASSVCSTARTUPTYPE="Automatic" /ASCOLLATION="Latin1_General_CI_AS" /ASDATADIR="Data" /ASLOGDIR="Log" /ASBACKUPDIR="Backup" /ASTEMPDIR="Temp" /ASCONFIGDIR="Config" /ASPROVIDERMSOLAP="1" /SQLSVCSTARTUPTYPE="Automatic" /FILESTREAMLEVEL="0" /ENABLERANU="True" /SQLCOLLATION="SQL_Latin1_General_CP1_CI_AS" /SQLSVCACCOUNT="NT AUTHORITY\NETWORK SERVICE" /ADDCURRENTUSERASSQLADMIN="True" /TCPENABLED="0" /NPENABLED="0" /BROWSERSVCSTARTUPTYPE="Disabled" /RSSVCSTARTUPTYPE="Automatic" /RSINSTALLMODE="FilesOnlyMode" /SECURITYMODE=SQL /SAPWD="P@ssword12345678"' 
+                        Permanent="yes" 
+                        Name="Installing SQL Server Express 2014" 
+                        SourceFile="SQLEXPRADV_x64_ENU.exe" 
+                        Vital="yes" 
+                        PerMachine="yes" />
       <RollbackBoundary />
       
       <MsiPackage
         Id="Setup"
         Compressed="yes"
         SourceFile="$(var.AgrimanagrSetup.TargetPath)"
-        Vital="yes">
+        Vital="yes"
+        ForcePerMachine="yes"
+      >
       </MsiPackage>
     </Chain>
 	</Bundle>
